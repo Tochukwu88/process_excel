@@ -1,0 +1,51 @@
+{
+  "development": {
+    "username": "teecee",
+    "password": "flower54",
+    "database": "bonitasict",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "define": {
+      "freezeTableName": true,
+      "charset": "utf8",
+      "collate": "utf8_general_ci"
+    }
+  },
+  "test": {
+    "username": "postgres",
+    "password": "password",
+    "database": "gve-app-backend-test",
+    "host": "bonitasict-db.cluster-ckect1mjzcsh.eu-west-3.rds.amazonaws.com",
+    "port": 5432,
+    "dialect": "postgres",
+    "dialectOptions": {
+      "requestTimeout": 100000,
+      "ssl": {
+        "rejectUnauthorized": false
+      }
+    },
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "idle": 20000,
+      "handleDisconnects": true
+    },
+    "language": "en",
+    "define": {
+      "freezeTableName": true,
+      "charset": "utf8",
+      "collate": "utf8_general_ci"
+    }
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+       "ssl": {
+         "require": true,
+         "rejectUnauthorized": false
+       }
+     }
+   }
+  
+}

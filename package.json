@@ -1,0 +1,44 @@
+{
+  "name": "gve-app-backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
+  },
+  "type": "module",
+  "dependencies": {
+    "aws-sdk": "^2.1121.0",
+    "celebrate": "^15.0.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
+    "express": "~4.16.1",
+    "express-jwt": "^6.1.0",
+    "glob": "^8.0.1",
+    "js-sha256": "^0.9.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.4",
+    "nodemailer": "^6.7.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "paystack": "^2.0.1",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "remove": "^0.1.5",
+    "sequelize": "^6.6.5",
+    "serverless-http": "^2.7.0",
+    "serverless-sequelize-migrations": "^1.1.1",
+    "sharp": "^0.30.4",
+    "slugify": "^1.6.5",
+    "umzug": "^3.0.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "nodemon": "^2.0.15",
+    "sequelize-cli": "^6.4.1",
+    "serverless-bundle": "^5.1.0"
+  }
+}
