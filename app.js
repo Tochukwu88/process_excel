@@ -15,9 +15,10 @@ const environment = process.env.NODE_ENV || "development"; // defaults to develo
   try {
     await modelsLoader();
     // do not destructively alter the database during prodction
+
     if (environment == "production") {
       console.log("...running in production mode...");
-      await sequelize.sync(); // doesn't alter the database
+      await sequelize.sync({ force: true }); // doesn't alter the database
     } else {
       console.log(`...running in ${environment} mode...`);
       await sequelize.sync({ alter: false }); // TODO change to true
