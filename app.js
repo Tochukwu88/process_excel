@@ -39,7 +39,7 @@ app.use(express.urlencoded({ limit: "10mb", extended: false }));
 app.use(cookieParser());
 const __dirname = path.resolve();
 
-app.use("/api", (req, res, next) => {
+app.use("/api/v1", (req, res, next) => {
   // setup CORS
   res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
   res.header("Access-Control-Allow-Origin", "*");

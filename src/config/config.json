@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "teecee",
-    "password": "flower54",
+    "username": "",
+    "password": "",
     "database": "bonitasict",
     "host": "127.0.0.1",
     "dialect": "postgres",
