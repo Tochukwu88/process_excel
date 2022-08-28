@@ -19,7 +19,6 @@ let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  // in my serverless.yml file after adding the below
   config["dialectModule"] = pg; // to prevent an error when using the serverless framework
   sequelize = new Sequelize(
     config.database,
@@ -29,10 +28,7 @@ if (config.use_env_variable) {
   );
 }
 
-// returns true if we're in AWS Lambda
-// false if we're in another environment such as my local computer or ec2 container
-const isLambda = !!process.env.LAMBDA_TASK_ROOT;
-const loadModels = isLambda ? serverlessLoader : localLoader;
+const loadModels = localLoader;
 
 // localLoader is used for EC2 instances as well
 async function localLoader() {
@@ -57,22 +53,6 @@ async function localLoader() {
     if (count == modelFiles.length) associate(models);
   });
   return models;
-}
-
-// lambda is having problems loading truly dynamically using webpack
-// so we had to resort to this
-async function serverlessLoader() {
-  let modules = {};
-  modules["User"] = await import("./user.js");
-  modules["Otp"] = await import("./otp.js");
-
-  let models = {};
-  Object.keys(modules).forEach((name) => {
-    const model = modules[name].default(sequelize, Sequelize.DataTypes);
-    models[model.name] = model;
-  });
-
-  return associate(models);
 }
 
 // Call the associate() static method for models
