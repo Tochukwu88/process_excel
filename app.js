@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
-
+import cors from "cors";
 import env from "dotenv";
 env.config();
 
@@ -38,17 +38,22 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: false }));
 app.use(cookieParser());
 const __dirname = path.resolve();
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
-app.use("/api/v1", (req, res, next) => {
-  // setup CORS
-  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  next();
-});
+// app.use("/api/v1", (req, res, next) => {
+//   // setup CORS
+//   res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
+//   next();
+// });
 
 app.use("/api/v1", adminStudentRouter);
 
